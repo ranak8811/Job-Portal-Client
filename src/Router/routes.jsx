@@ -29,7 +29,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://job-portal-server-roan.vercel.app/jobs/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/jobs/${params.id}`),
       },
       {
         path: "/jobApply/:id",
@@ -72,7 +72,9 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://job-portal-server-roan.vercel.app/job-applications/jobs/${params.job_id}`
+            `${import.meta.env.VITE_API_URL}/job-applications/jobs/${
+              params.job_id
+            }`
           ),
       },
       {

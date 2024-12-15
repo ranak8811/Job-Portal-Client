@@ -1,16 +1,30 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 const MyApplications = () => {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://job-portal-server-roan.vercel.app/job-application?email=${user.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => setJobs(data));
+    // fetch(`${import.meta.env.VITE_API_URL}/job-application?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setJobs(data));
+    // axios
+    //   .get(
+    //     `${import.meta.env.VITE_API_URL}/job-application?email=${user.email}`,
+    //     { withCredentials: true }
+    //   )
+    //   .then((res) => setJobs(res.data));
+
+    //----------------------------------------------------------------
+    axios
+      .get(
+        `${import.meta.env.VITE_API_URL}/job-application?email=${user.email}`,
+        { withCredentials: true }
+      )
+      .then((res) => setJobs(res.data));
+    //----------------------------------------------------------------
   }, [user.email]);
   return (
     <div>

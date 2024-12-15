@@ -11,7 +11,7 @@ const ViewApplications = () => {
       status: e.target.value,
     };
 
-    fetch(`https://job-portal-server-roan.vercel.app/job-applications/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/job-applications/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

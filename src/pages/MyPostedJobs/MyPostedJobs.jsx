@@ -7,7 +7,7 @@ const MyPostedJobs = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`https://job-portal-server-roan.vercel.app/jobs?email=${user.email}`)
+    fetch(`${import.meta.env.VITE_API_URL}/jobs?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
